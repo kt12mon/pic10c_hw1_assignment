@@ -74,12 +74,17 @@ int main() {
 			}
 			cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
 		}
+		if (Player_hand.sum_hand() > 7.5)
+			winner = false;
 
+		else if (Dealer_hand.sum_hand > 7.5)
+			winner = true;
 
+		else if (Player_hand.sum_hand() <= Dealer_hand.sum_hand())
+			winner = false;
 
-
-
-		//CODE TO RUN GAME GOES HERE
+		else if (Player_hand.sum_hand() > Dealer_hand.sum_hand())
+			winner = true;
 
 		//if won: declare winner and add to Player's money and dealer's loss. Do inverse for loss
 		if (winner) {
@@ -92,8 +97,7 @@ int main() {
 			cout << "You lost! You have lost " << bet << " dollars!" << endl;
 			dealer_loss -= bet;
 		}
-		cout << "You now have " << Person.get_money() << " dollars to play with!" << endl;
-
+	
 		//set bet back to 0 to restart game loop
 		bet = 0;
 	}
