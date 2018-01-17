@@ -1,8 +1,8 @@
-#pragma/* *************************************
-   Ricardo Salazar, February 26, 2015
+/* *************************************
+Ricardo Salazar, February 26, 2015
 
-   Interface of a simple Card class
-   ************************************* */
+Interface of a simple Card class
+************************************* */
 
 #include <string>
 #include <vector>
@@ -51,6 +51,7 @@ public:
 	// Assume Ace is always 1. 
 	// Useful if you want to sort the cards.
 	bool operator < (Card card2) const;
+	void print_card() const;
 
 private:
 	suit_t suit;
@@ -61,12 +62,18 @@ private:
 class Hand {
 public:
 	// A vector of Cards
-	Hand();
+	Hand();             //constructs hand by giving cards
+	void deal_card(Card *C);   //gives card to player
+	double sum_hand() const;  //gives sum of hand
+	bool operator < (Hand Hand2) const;
+	void print_hand() const;
 
 	// You decide what functions you'll need...
 
 private:
-	// You decide what fields you'll need...
+	vector<Card*> current_hand;
+	double sum;
+
 };
 
 

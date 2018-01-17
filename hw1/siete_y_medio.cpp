@@ -35,7 +35,41 @@ int main() {
 			cin >> bet;
 		}
 
+<<<<<<< HEAD
 		std::cout << "Your cards:" << endl;
+=======
+		Hand Player_hand;
+		Hand Dealer_hand;
+		string answer = "n";
+
+		Card *draw;
+
+		Player_hand.deal_card(draw);
+		cout << "Your cards:" << endl;
+		Player_hand.print_hand();
+
+		cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
+		cin >> answer;
+		while (answer == "y" & Player_hand.sum_hand() < 7.5) {
+			Card *draw;
+			Player_hand.deal_card(draw);
+			cout << "New card: " << endl;
+			draw->print_card();
+			cout << endl << "Your cards:" << endl;
+			Player_hand.print_hand();
+			if (Player_hand.sum_hand() > 7.5)
+			{
+				cout << "You busted!" << endl;
+				break;
+			}
+			cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
+			cin >> answer;
+		}
+
+
+
+
+>>>>>>> Hands_class
 
 		//CODE TO RUN GAME GOES HERE
 

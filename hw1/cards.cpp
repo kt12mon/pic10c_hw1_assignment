@@ -110,13 +110,63 @@ string Card::get_spanish_rank() const {
 // Accessor: returns a string with the suit of the card in English 
 // This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
-	return "";
+	string suitName;
+	switch (suit) {
+	case OROS:
+		suitName = "Golds";
+		break;
+	case COPAS:
+		suitName = "Cups";
+		break;
+	case ESPADAS:
+		suitName = "Swords";
+		break;
+	case BASTOS:
+		suitName = "Clubs";
+		break;
+	default: break;
+	}
+	return suitName;
 }
 
 // Accessor: returns a string with the rank of the card in English 
 // This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
-	return "";
+	string rankName;
+	switch (rank) {
+	case AS:
+		rankName = "Ace";
+		break;
+	case DOS:
+		rankName = "Two";
+		break;
+	case TRES:
+		rankName = "Three";
+		break;
+	case CUATRO:
+		rankName = "Four";
+		break;
+	case CINCO:
+		rankName = "Five";
+		break;
+	case SEIS:
+		rankName = "Six";
+		break;
+	case SIETE:
+		rankName = "Seven";
+		break;
+	case SOTA:
+		rankName = "Jack";
+		break;
+	case CABALLO:
+		rankName = "Knight";
+		break;
+	case REY:
+		rankName = "King";
+		break;
+	default: break;
+	}
+	return rankName;
 }
 
 
@@ -133,13 +183,46 @@ bool Card::operator < (Card card2) const {
 	return rank < card2.rank;
 }
 
+void Card::print_card() const {
+	cout << "/t" << get_spanish_rank() << " de " << get_spanish_suit()
+		<< "(" << get_english_rank << " of " << get_english_suit << ")." << endl;
+}
+
+
 
 
 /* *************************************************
 Hand class
 ************************************************* */
 // Implemente the member functions of the Hand class here.
+Hand::Hand() {
+	sum = 0;
+}
 
+//deals a card to hand
+void Hand::deal_card(Card *C) {
+	current_hand.push_back(C);
+
+	//adds value of the card to the sum of hand
+	if (C->get_rank() == 10 || C->get_rank() == 11 || C->get_rank() == 12)
+		sum += .5;
+	else
+		sum += C->get_rank();
+}
+
+double Hand::sum_hand() const {
+	return sum;
+}
+
+bool Hand::operator< (Hand Hand2) const {
+	return sum < Hand2.sum;
+}
+
+void Hand::print_hand() const {
+	for (int i = 0; i < current_hand.size(); i++) {
+		current_hand[i]->print_card();
+	}
+}
 
 
 /* *************************************************
