@@ -22,6 +22,7 @@ int main() {
 	Player Person(100);
 	int dealer_loss(0);
 	int bet(0);
+	int game_number(0);
 	bool winner(false);
 	ofstream myfile;
 
@@ -50,16 +51,29 @@ int main() {
 			dealer_loss -= bet;
 		}
 		std::cout << "You now have " << Person.get_money() << " dollars to play with!" << endl;
-
-		//set bet back to 0 to restart game loop
-		bet = 0;
-
+		
 		//CODE TO WRITE TO LOG FILE AFTER EACH GAME
 		//NEED TO INSERT CLASS FUNCTIONS IN GAPS
 		myfile.open("gamelog.txt");
-		myfile << "Write test";
+		myfile << "Game number: " << game_number << "/t Money left: $" << Person.get_money() << endl;
+		myfile << "Bet: " << bet << endl << endl;
+		myfile << "Your cards:" << endl;
+
+		//PRINT PLAYER CARDS HERE
+
+		myfile << "Your total: "; //PRINT PLAYER TOTAL
+
+		myfile << "Dealer's cards:" << endl;
+
+		//PRINT DEALER CARDS
+
+		myfile << "Dealer's total is "; //PRINT DEALER TOTAL
+
+		myfile << "-----------------------------------------------" << endl;
 		myfile.close();
 
+		game_number++;
+		bet = 0;
 	}
 
 	return 0;
