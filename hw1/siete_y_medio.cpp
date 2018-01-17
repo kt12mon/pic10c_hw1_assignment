@@ -52,6 +52,11 @@ int main() {
 			draw->print_card();
 			cout << endl << "Your cards:" << endl;
 			Player_hand.print_hand();
+			if (Player_hand.sum_hand() > 7.5)
+			{
+				cout << "You busted!" << endl;
+				break;
+			}
 			cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
 			cin >> answer;
 		}
