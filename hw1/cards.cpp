@@ -146,3 +146,14 @@ Hand class
 Player class
 ************************************************* */
 // Implemente the member functions of the Player class here.
+Player::Player(int m) {
+	money = m;
+}
+
+void Player::change_money(int m) {
+	money = money + m;
+}
+
+int Player::get_money() const {
+	return money;
+}

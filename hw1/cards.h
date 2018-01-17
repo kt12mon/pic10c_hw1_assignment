@@ -75,12 +75,12 @@ public:
 	// Constructor. 
 	//    Assigns initial amount of money
 	Player(int m);
-
-	// You decide what functions you'll need...
+	void change_money(int m);
+	int get_money() const;
 
 private:
 	int money;
-	// You decide what extra fields (if any) you'll need...
+
 };
 
 #endif once
