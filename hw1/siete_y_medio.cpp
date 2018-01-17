@@ -56,6 +56,25 @@ int main() {
 			cin >> answer;
 		}
 
+		Card *draw;
+		Dealer_hand.deal_card(draw);
+		cout << "Dealer's cards: ";
+		draw->print_card;
+		cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
+		while (Dealer_hand.sum_hand < 5.5) {
+			Card *draw;
+			Dealer_hand.deal_card(draw);
+			cout << "New card: " << endl;
+			draw->print_card();
+			cout << "Dealer's cards: " << endl;
+			Dealer_hand.print_hand();
+			if (Dealer_hand.sum_hand() > 7.5){
+				cout << "The dealer busted!" << endl;
+				break;
+			}
+			cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
+		}
+
 
 
 
