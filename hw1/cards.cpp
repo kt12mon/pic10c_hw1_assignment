@@ -200,8 +200,7 @@ Hand::Hand() {
 }
 
 //deals a card to hand
-void Hand::deal_card() {
-	Card *C;
+void Hand::deal_card(Card *C) {
 	current_hand.push_back(C);
 
 	//adds value of the card to the sum of hand

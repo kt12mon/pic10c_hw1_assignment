@@ -63,7 +63,7 @@ class Hand {
 public:
 	// A vector of Cards
 	Hand();             //constructs hand by giving cards
-	void deal_card();   //gives card to player
+	void deal_card(Card *C);   //gives card to player
 	double sum_hand() const;  //gives sum of hand
 	bool operator < (Hand Hand2) const;
 	void print_hand() const;

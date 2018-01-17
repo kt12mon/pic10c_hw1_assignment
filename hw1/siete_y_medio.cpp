@@ -33,7 +33,32 @@ int main() {
 			cin >> bet;
 		}
 
+		Hand Player_hand;
+		Hand Dealer_hand;
+		string answer = "n";
+
+		Card *draw;
+
+		Player_hand.deal_card(draw);
 		cout << "Your cards:" << endl;
+		Player_hand.print_hand();
+
+		cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
+		cin >> answer;
+		while (answer == "y" & Player_hand.sum_hand() < 7.5) {
+			Card *draw;
+			Player_hand.deal_card(draw);
+			cout << "New card: " << endl;
+			draw->print_card();
+			cout << endl << "Your cards:" << endl;
+			Player_hand.print_hand();
+			cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
+			cin >> answer;
+		}
+
+
+
+
 
 		//CODE TO RUN GAME GOES HERE
 
