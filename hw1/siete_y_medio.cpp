@@ -47,7 +47,7 @@ int main() {
 
 		cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
 		cin >> answer;
-		while (answer == "y" & Player_hand.sum_hand() < 7.5) {
+		while (answer == "y" && Player_hand.sum_hand() < 7.5) {
 			Card *draw;
 			Player_hand.deal_card(draw);
 			cout << "New card: " << endl;
@@ -67,9 +67,9 @@ int main() {
 		Card *draw;
 		Dealer_hand.deal_card(draw);
 		cout << "Dealer's cards: ";
-		draw->print_card;
+		draw->print_card();
 		cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
-		while (Dealer_hand.sum_hand < 5.5) {
+		while (Dealer_hand.sum_hand() < 5.5) {
 			Card *draw;
 			Dealer_hand.deal_card(draw);
 			cout << "New card: " << endl;
@@ -85,7 +85,7 @@ int main() {
 		if (Player_hand.sum_hand() > 7.5)
 			winner = false;
 
-		else if (Dealer_hand.sum_hand > 7.5)
+		else if (Dealer_hand.sum_hand() > 7.5)
 			winner = true;
 
 		else if (Player_hand.sum_hand() <= Dealer_hand.sum_hand())
@@ -107,7 +107,7 @@ int main() {
 		}
 
 		std::cout << "You now have " << Person.get_money() << " dollars to play with!" << endl;
-		
+		/*
 		//CODE TO WRITE TO LOG FILE AFTER EACH GAME
 		//NEED TO INSERT CLASS FUNCTIONS IN GAPS
 		myfile.open("gamelog.txt");
@@ -127,7 +127,7 @@ int main() {
 
 		myfile << "-----------------------------------------------" << endl;
 		myfile.close();
-
+		*/
 		game_number++;
 		//set bet back to 0 to restart game loop
 

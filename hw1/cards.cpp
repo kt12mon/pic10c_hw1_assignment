@@ -185,7 +185,7 @@ bool Card::operator < (Card card2) const {
 
 void Card::print_card() const {
 	cout << "/t" << get_spanish_rank() << " de " << get_spanish_suit()
-		<< "(" << get_english_rank << " of " << get_english_suit << ")." << endl;
+		<< "(" << get_english_rank() << " of " << get_english_suit() << ")." << endl;
 }
 
 
