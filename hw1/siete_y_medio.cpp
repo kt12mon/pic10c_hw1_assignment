@@ -34,10 +34,7 @@ int main() {
 			std::cout << "Place your bet: ";
 			cin >> bet;
 		}
-
-<<<<<<< HEAD
 		std::cout << "Your cards:" << endl;
-=======
 		Hand Player_hand;
 		Hand Dealer_hand;
 		string answer = "n";
@@ -66,13 +63,6 @@ int main() {
 			cin >> answer;
 		}
 
-
-
-
->>>>>>> Hands_class
-
-		//CODE TO RUN GAME GOES HERE
-
 		//if won: declare winner and add to Player's money and dealer's loss. Do inverse for loss
 		if (winner) {
 			Person.change_money(bet);
@@ -95,13 +85,13 @@ int main() {
 
 		//PRINT PLAYER CARDS HERE
 
-		myfile << "Your total: "; //PRINT PLAYER TOTAL
+		myfile << "Your total: " << Player_hand.sum_hand();
 
 		myfile << "Dealer's cards:" << endl;
 
 		//PRINT DEALER CARDS
 
-		myfile << "Dealer's total is "; //PRINT DEALER TOTAL
+		myfile << "Dealer's total is " << Dealer_hand.sum_hand();
 
 		myfile << "-----------------------------------------------" << endl;
 		myfile.close();
