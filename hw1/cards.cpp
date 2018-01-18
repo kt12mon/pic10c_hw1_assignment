@@ -184,11 +184,35 @@ bool Card::operator < (Card card2) const {
 }
 
 void Card::print_card() const {
-	cout << "/t" << get_spanish_rank() << " de " << get_spanish_suit()
+	cout << "\t" << get_spanish_rank() << " de " << get_spanish_suit()
 		<< "(" << get_english_rank() << " of " << get_english_suit() << ")." << endl;
 }
 
+void Card::redraw() {
+	int r = 1 + rand() % 4;
+	switch (r) {
+	case 1: suit = OROS; break;
+	case 2: suit = COPAS; break;
+	case 3: suit = ESPADAS; break;
+	case 4: suit = BASTOS; break;
+	default: break;
+	}
 
+	r = 1 + rand() % 10;
+	switch (r) {
+	case  1: rank = AS; break;
+	case  2: rank = DOS; break;
+	case  3: rank = TRES; break;
+	case  4: rank = CUATRO; break;
+	case  5: rank = CINCO; break;
+	case  6: rank = SEIS; break;
+	case  7: rank = SIETE; break;
+	case  8: rank = SOTA; break;
+	case  9: rank = CABALLO; break;
+	case 10: rank = REY; break;
+	default: break;
+	}
+}
 
 
 /* *************************************************
@@ -200,14 +224,14 @@ Hand::Hand() {
 }
 
 //deals a card to hand
-void Hand::deal_card(Card *C) {
+void Hand::deal_card(Card C) {
 	current_hand.push_back(C);
 
 	//adds value of the card to the sum of hand
-	if (C->get_rank() == 10 || C->get_rank() == 11 || C->get_rank() == 12)
+	if (C.get_rank() == 10 || C.get_rank() == 11 || C.get_rank() == 12)
 		sum += .5;
 	else
-		sum += C->get_rank();
+		sum += C.get_rank();
 }
 
 double Hand::sum_hand() const {
@@ -220,8 +244,13 @@ bool Hand::operator< (Hand Hand2) const {
 
 void Hand::print_hand() const {
 	for (int i = 0; i < current_hand.size(); i++) {
-		current_hand[i]->print_card();
+		current_hand[i].print_card();
 	}
+}
+
+void Hand::empty_hand() {
+	current_hand.clear();
+	sum = 0;
 }
 
 

@@ -11,10 +11,13 @@ using namespace std;
 
 
 // Non member functions declarations (if any)
-
+Card draw_card();
 
 // Non member functions implementations (if any)
-
+Card draw_card() {
+	Card C;
+	return C;
+}
 
 // Stub for main
 int main() {
@@ -25,6 +28,10 @@ int main() {
 	int game_number(0);
 	bool winner(false);
 	ofstream myfile;
+	Hand Player_hand;
+	Hand Dealer_hand;
+	string answer = "n";
+	Card draw;
 
 	//game will keep playing as long as player's money is above 0
 	while (Person.get_money() > 0) {
@@ -34,13 +41,8 @@ int main() {
 			std::cout << "Place your bet: ";
 			cin >> bet;
 		}
-		std::cout << "Your cards:" << endl;
-		Hand Player_hand;
-		Hand Dealer_hand;
-		string answer = "n";
-
-		Card *draw;
-
+		
+		draw = draw_card();
 		Player_hand.deal_card(draw);
 		cout << "Your cards:" << endl;
 		Player_hand.print_hand();
@@ -48,10 +50,10 @@ int main() {
 		cout << "Your total is " << Player_hand.sum_hand() << ". Do you want another (y/n)? ";
 		cin >> answer;
 		while (answer == "y" && Player_hand.sum_hand() < 7.5) {
-			Card *draw;
+			draw = draw_card();
 			Player_hand.deal_card(draw);
 			cout << "New card: " << endl;
-			draw->print_card();
+			draw.print_card();
 			cout << endl << "Your cards:" << endl;
 			Player_hand.print_hand();
 			if (Player_hand.sum_hand() > 7.5)
@@ -64,16 +66,16 @@ int main() {
 		}
 
 
-		Card *draw;
+		draw = draw_card();
 		Dealer_hand.deal_card(draw);
 		cout << "Dealer's cards: ";
-		draw->print_card();
+		draw.print_card();
 		cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
 		while (Dealer_hand.sum_hand() < 5.5) {
-			Card *draw;
+			draw;
 			Dealer_hand.deal_card(draw);
 			cout << "New card: " << endl;
-			draw->print_card();
+			draw.print_card();
 			cout << "Dealer's cards: " << endl;
 			Dealer_hand.print_hand();
 			if (Dealer_hand.sum_hand() > 7.5){
@@ -129,9 +131,10 @@ int main() {
 		myfile.close();
 		*/
 		game_number++;
-		//set bet back to 0 to restart game loop
-
+		//reset all variables
 		bet = 0;
+		Player_hand.empty_hand();
+		Dealer_hand.empty_hand();
 	}
 
 	return 0;

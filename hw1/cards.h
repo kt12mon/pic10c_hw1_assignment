@@ -53,6 +53,8 @@ public:
 	bool operator < (Card card2) const;
 	void print_card() const;
 
+	void redraw();
+
 private:
 	suit_t suit;
 	rank_t rank;
@@ -63,15 +65,16 @@ class Hand {
 public:
 	// A vector of Cards
 	Hand();             //constructs hand by giving cards
-	void deal_card(Card *C);   //gives card to player
+	void deal_card(Card C);   //gives card to player
 	double sum_hand() const;  //gives sum of hand
 	bool operator < (Hand Hand2) const;
 	void print_hand() const;
+	void empty_hand();
 
 	// You decide what functions you'll need...
 
 private:
-	vector<Card*> current_hand;
+	vector<Card> current_hand;
 	double sum;
 
 };
@@ -80,7 +83,7 @@ private:
 class Player {
 public:
 	// Constructor. 
-	//    Assigns initial amount of money
+	//Assigns initial amount of money
 	Player(int m);
 	void change_money(int m);
 	int get_money() const;
