@@ -165,7 +165,7 @@ You lost! You have lost 200 dollars!
 You now have 0 dollars to play with!
 Press any key to continue . . .
 
-Sample File Output:
+## Sample File Output:
 Game number: 1	 Money left: $200
 Bet: 100
 
@@ -199,6 +199,6 @@ Dealer's total is 9.
 
 -----------------------------------------------
 
-Known Bugs:
+## Known Bugs:
 None
 
