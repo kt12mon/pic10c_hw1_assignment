@@ -70,6 +70,7 @@ public:
 	bool operator < (Hand Hand2) const;
 	void print_hand() const;
 	void empty_hand();
+	friend ofstream& operator << (ofstream &fs, const Hand &H);
 
 	// You decide what functions you'll need...
 

@@ -253,6 +253,16 @@ void Hand::empty_hand() {
 	sum = 0;
 }
 
+ofstream& operator << (ofstream &fs, const Hand &H) {
+	for (int i = 0; i < H.current_hand.size(); i++) {
+		fs << "\t" << H.current_hand[i].get_spanish_rank() << " de " << H.current_hand[i].get_spanish_suit()
+			<< "(" << H.current_hand[i].get_english_rank() << " of " << H.current_hand[i].get_english_suit() << ")." << endl;
+	}
+	return fs;
+}
+
+
+
 
 /* *************************************************
 Player class

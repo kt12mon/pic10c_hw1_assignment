@@ -25,16 +25,17 @@ int main() {
 	Player Person(100);
 	int dealer_loss(0);
 	int bet(0);
-	int game_number(0);
+	int game_number(1);
 	bool winner(false);
 	ofstream myfile;
 	Hand Player_hand;
 	Hand Dealer_hand;
 	string answer = "n";
 	Card draw;
+	myfile.open("gamelog.txt");
 
 	//game will keep playing as long as player's money is above 0
-	while (Person.get_money() > 0) {
+	while (Person.get_money() > 0 || dealer_loss >= 900) {
 		std::cout << "You have $" << Person.get_money() << ". ";
 		//internal check to make sure proper betting is occuring
 		while (bet == 0 || bet > Person.get_money()) {
@@ -72,7 +73,7 @@ int main() {
 		draw.print_card();
 		cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
 		while (Dealer_hand.sum_hand() < 5.5) {
-			draw;
+			draw = draw_card();
 			Dealer_hand.deal_card(draw);
 			cout << "New card: " << endl;
 			draw.print_card();
@@ -82,7 +83,7 @@ int main() {
 				cout << "The dealer busted!" << endl;
 				break;
 			}
-			cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
+			cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl << endl;
 		}
 		if (Player_hand.sum_hand() > 7.5)
 			winner = false;
@@ -109,33 +110,33 @@ int main() {
 		}
 
 		std::cout << "You now have " << Person.get_money() << " dollars to play with!" << endl;
-		/*
+		
 		//CODE TO WRITE TO LOG FILE AFTER EACH GAME
-		//NEED TO INSERT CLASS FUNCTIONS IN GAPS
-		myfile.open("gamelog.txt");
-		myfile << "Game number: " << game_number << "/t Money left: $" << Person.get_money() << endl;
+		
+		myfile << "Game number: " << game_number << "\t Money left: $" << Person.get_money() << endl;
 		myfile << "Bet: " << bet << endl << endl;
 		myfile << "Your cards:" << endl;
 
-		//PRINT PLAYER CARDS HERE
+		myfile << Player_hand;
 
-		myfile << "Your total: " << Player_hand.sum_hand();
+		myfile << "Your total: " << Player_hand.sum_hand() << "." << endl << endl;
 
 		myfile << "Dealer's cards:" << endl;
 
-		//PRINT DEALER CARDS
+		myfile << Dealer_hand;
 
-		myfile << "Dealer's total is " << Dealer_hand.sum_hand();
+		myfile << "Dealer's total is " << Dealer_hand.sum_hand() << "." << endl << endl;
 
-		myfile << "-----------------------------------------------" << endl;
-		myfile.close();
-		*/
+		myfile << "-----------------------------------------------" << endl << endl;
+				
 		game_number++;
+
 		//reset all variables
 		bet = 0;
 		Player_hand.empty_hand();
 		Dealer_hand.empty_hand();
 	}
 
+	myfile.close();
 	return 0;
 }
