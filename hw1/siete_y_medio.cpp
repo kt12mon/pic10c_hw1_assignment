@@ -63,6 +63,39 @@ int main() {
 			cin >> answer;
 		}
 
+<<<<<<< HEAD
+=======
+		Card *draw;
+		Dealer_hand.deal_card(draw);
+		cout << "Dealer's cards: ";
+		draw->print_card;
+		cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
+		while (Dealer_hand.sum_hand < 5.5) {
+			Card *draw;
+			Dealer_hand.deal_card(draw);
+			cout << "New card: " << endl;
+			draw->print_card();
+			cout << "Dealer's cards: " << endl;
+			Dealer_hand.print_hand();
+			if (Dealer_hand.sum_hand() > 7.5){
+				cout << "The dealer busted!" << endl;
+				break;
+			}
+			cout << "The dealer's total is " << Dealer_hand.sum_hand() << "." << endl;
+		}
+		if (Player_hand.sum_hand() > 7.5)
+			winner = false;
+
+		else if (Dealer_hand.sum_hand > 7.5)
+			winner = true;
+
+		else if (Player_hand.sum_hand() <= Dealer_hand.sum_hand())
+			winner = false;
+
+		else if (Player_hand.sum_hand() > Dealer_hand.sum_hand())
+			winner = true;
+
+>>>>>>> Dealer_Branch
 		//if won: declare winner and add to Player's money and dealer's loss. Do inverse for loss
 		if (winner) {
 			Person.change_money(bet);
@@ -74,6 +107,7 @@ int main() {
 			std::cout << "You lost! You have lost " << bet << " dollars!" << endl;
 			dealer_loss -= bet;
 		}
+<<<<<<< HEAD
 		std::cout << "You now have " << Person.get_money() << " dollars to play with!" << endl;
 		
 		//CODE TO WRITE TO LOG FILE AFTER EACH GAME
@@ -97,6 +131,10 @@ int main() {
 		myfile.close();
 
 		game_number++;
+=======
+	
+		//set bet back to 0 to restart game loop
+>>>>>>> Dealer_Branch
 		bet = 0;
 	}
 
