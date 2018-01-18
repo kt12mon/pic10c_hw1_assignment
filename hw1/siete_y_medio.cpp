@@ -91,14 +91,17 @@ int main() {
 		else if (Dealer_hand.sum_hand() > 7.5)
 			winner = true;
 
-		else if (Player_hand.sum_hand() <= Dealer_hand.sum_hand())
+		else if (Player_hand.sum_hand() < Dealer_hand.sum_hand())
 			winner = false;
 
 		else if (Player_hand.sum_hand() > Dealer_hand.sum_hand())
 			winner = true;
 
 		//if won: declare winner and add to Player's money and dealer's loss. Do inverse for loss
-		if (winner) {
+		if (Player_hand.sum_hand() == Dealer_hand.sum_hand())
+			std::cout << "It was a tie! No money is exchanged";
+
+		else if (winner) {
 			Person.change_money(bet);
 			std::cout << "You won! You have won " << bet << " dollars!" << endl;
 			dealer_loss += bet;
